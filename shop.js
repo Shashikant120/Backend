@@ -1,7 +1,9 @@
-let express=require('express');
-let shoproute=express.Router();
-shoproute.get('/',(req,res,next)=>{
-    res.send('Welcome to the home page')
+let express = require('express');
+let path = require('path');
+let shoproute = express.Router();
+let rootDir = require('../util/path');
+shoproute.get('/', (req, res, next) => {
+    res.sendFile(path.join(rootDir, 'views', 'shop.html'));
 });
 
-module.exports=shoproute;
+module.exports = shoproute;

@@ -1,13 +1,25 @@
-let express=require('express');
-let router=express.Router();
+let express = require('express');
+let path = require('path');
+let rootDir = require('../util/path.js');
+let router = express.Router();
+
 
 router.get('/add-product', (req, res, next) => {
-    res.send('<form action="/admin/product" method="POST"><input type="title" name="val1" placeholder="Enter title of Product"/><br><input type="text" name="val2" placeholder="Enter the size of Product"/><br><button type="submit" >send</button></form>')
+    res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
+    
 })
-router.post('/product',(req,res,next)=>{
-    console.log('first input field is '+req.body.val1, 'and second input field is ' +req.body.val2);
-    res.redirect('/add-product');
+router.post('/add-product', (req, res, next) => {
+    console.log('Product is '+req.body.title);
+    res.redirect('/admin/add-product');
+})
+
+router.get('/contactus',(req,res,next)=>{
+res.sendFile(path.join(rootDir,'views','contact_form.html'));
+})
+router.post('/success',(req,res,next)=>{
+    res.sendFile(path.join(rootDir,'views','success.html'));
 })
 
 
-module.exports=router;
+module.exports = router;
+
