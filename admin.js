@@ -1,16 +1,15 @@
-let express = require('express');
-let router = express.Router();
-
-let ProductController=require('../Controllers/product.js');
 
 
-router.get('/add-product', ProductController.getAddProduct );
-router.post('/add-product', ProductController.postAddProduct);
-
-router.get('/contactus',ProductController.getContactUs);
-
-router.post('/success',ProductController.getSuccess);
+const express = require('express');
+const router = express.Router();
+const productsfile=require('../Controller/products.js');
 
 
-module.exports = router;
+// /admin/add-product => GET
+router.get('/add-product',productsfile.getaddproduct);
+
+// /admin/add-product => POST
+router.post('/add-product', productsfile.postaddproduct);
+
+module.exports=router;
 

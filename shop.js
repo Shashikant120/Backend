@@ -1,7 +1,9 @@
-let express = require('express');
-let shoproute = express.Router();
-let ProductController=require('../Controllers/product.js');
 
-shoproute.get('/',ProductController.getslash);
 
-module.exports = shoproute;
+const express = require('express');
+const router = express.Router();
+let productfile=require('../Controller/products.js');
+
+router.get('/', productfile.getshop);
+
+module.exports = router;
